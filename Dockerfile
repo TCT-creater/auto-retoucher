@@ -16,12 +16,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Streamlit 設定: Railway のリバースプロキシ対応
+RUN mkdir -p ~/.streamlit && \
+    echo '[server]\n\
+headless = true\n\
+address = "0.0.0.0"\n\
+port = 8501\n\
+enableCORS = false\n\
+enableXsrfProtection = false\n\
+\n\
+[browser]\n\
+gatherUsageStats = false\n' > ~/.streamlit/config.toml
+
 EXPOSE 8501
 
-ENV PORT=8501
-
-CMD streamlit run app.py \
-    --server.port=$PORT \
-    --server.address=0.0.0.0 \
-    --server.headless=true \
-    --browser.gatherUsageStats=false
+CMD ["streamlit", "run", "app.py", "--server.port=8501"]
