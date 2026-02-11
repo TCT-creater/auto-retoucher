@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+.vscode/
+.idea/
+.git/
+models/*.pth
+models/*.task
+assets/test_face.jpg
+test_*.py
+download_test_image.py
+Thumbs.db
+.DS_Store

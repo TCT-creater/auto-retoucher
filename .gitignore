@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 環境変数 (APIキー保護)
+.env
+
+# 仮想環境
+.venv/
+venv/
+
+# AI モデルファイル (大容量)
+models/*.pth
+models/*.task
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# テスト画像
+assets/test_face.jpg
