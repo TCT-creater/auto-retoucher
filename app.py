@@ -133,7 +133,7 @@ with st.sidebar:
         st.session_state["lip_plump"] = 0.0
         st.session_state["jaw_slim"] = 0.10
         st.session_state["sharpness"] = 0.25
-        st.session_state["ai_restore"] = 0.45
+        st.session_state["ai_restore"] = 0.0      # API課金なし
         st.session_state["eye_catchlight"] = 0.15
         st.session_state["eye_sclera"] = 0.10
         st.session_state["eye_iris"] = 0.10
