@@ -225,25 +225,43 @@ with st.sidebar:
                           help="輪郭をくっきりさせて写真を鮮明にします")
 
     # ─────────────────────────────────────────
-    # 🔬 AI 美肌復元
+    # 🔬 AI 美肌補正
     # ─────────────────────────────────────────
     st.markdown("---")
-    st.markdown('<div class="slider-group"><h4>🔬 AI 美肌復元</h4></div>',
+    st.markdown('<div class="slider-group"><h4>🔬 AI 美肌補正</h4></div>',
                 unsafe_allow_html=True)
+    st.markdown(
+        '<div style="background:rgba(239,100,100,0.08); border:1px solid rgba(239,100,100,0.25);'
+        ' border-radius:10px; padding:8px 12px; margin-bottom:8px; font-size:0.82rem;">'
+        '⚠️ <b>※注意：この機能を使うと料金が課金されます</b>'
+        '<br>スライダーを動かすたびにAPI通信が発生します（1回あたり約0.2〜0.5円）'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        '<div style="background:rgba(200,170,140,0.1); border-radius:10px;'
+        ' padding:8px 12px; margin-bottom:10px; font-size:0.78rem; color:#8a7a6a;">'
+        '💡 <b>おまかせボタンの補正との違い</b><br>'
+        '・おまかせボタン → 写真を「加工」（元のピクセルを調整 / 無料）<br>'
+        '・AI美肌補正 → 写真を「描き直す」（AIが肌のキメ・瞳・まつ毛を新しく生成）<br>'
+        '普通のスマホ写真ならおまかせボタンだけで十分キレイに仕上がります 🌸'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
     restorer = get_face_restorer()
     if restorer.available:
         st.markdown('<span class="status-badge">🟢 AI 接続OK</span>',
                     unsafe_allow_html=True)
-        ai_restore = st.slider("AI 復元の強さ", 0.0, 1.0, key="ai_restore", step=0.05,
-                               help="AIが肌のキメや目の輝きを自然に復元します")
+        ai_restore = st.slider("AI 補正の強さ", 0.0, 1.0, key="ai_restore", step=0.05,
+                               help="AIが肌のキメや目の輝きを自然に復元します（課金あり）")
     else:
         st.markdown(
             '<span class="status-badge" style="background:rgba(239,100,100,0.12);'
             'color:#e07070;">🔴 APIキー未設定</span>',
             unsafe_allow_html=True,
         )
-        st.caption("`.env` に `REPLICATE_API_TOKEN` を\n設定するとAI復元が使えます")
+        st.caption("`.env` に `REPLICATE_API_TOKEN` を\n設定するとAI補正が使えます")
         ai_restore = 0.0
 
     # ─────────────────────────────────────────
